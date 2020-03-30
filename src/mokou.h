@@ -14,7 +14,7 @@
 typedef struct mokou_attr
 {
 	keine *src,*dst;
-	SDL_Rect *srcrect;
+	SDL_Rect srcrect;
 	vec2_16 pos[4]; 
 	u16 mode,fillp;
 	u8 flip;

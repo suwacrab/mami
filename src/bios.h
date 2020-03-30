@@ -34,5 +34,6 @@ extern void bios_checkquit(bios *kernel);
 /*	--	draw functions --	*/
 extern void bios_draw(bios *kernel);
 extern void bios_clearscreen(bios *kernel);
+extern void bios_flip(bios *kernel);
 
 #endif

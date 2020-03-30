@@ -11,8 +11,7 @@ void bios_init(bios *kernel,u32 w,u32 h)
 	// video
 	s32 vidflags = SDL_SWSURFACE;
 	kernel->window = SDL_SetVideoMode(w,h,16,vidflags);
-	kernel->w = w;
-	kernel->h = h;
+	kernel->w = w; kernel->h = h;
 	// event
 	kernel->quit = false;
 	kernel->time = 0;
@@ -49,5 +48,4 @@ void bios_flip(bios *kernel)
 {
 	SDL_Delay(SDL_SECOND/60);
 	SDL_Flip(kernel->window);
-	kernel->time++;
 }

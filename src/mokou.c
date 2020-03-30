@@ -45,7 +45,7 @@ void mokou_sprN( mokou_attr *attr )
 	keine *src = attr->src;
 	keine *dst = attr->dst;
 	// rects
-	SDL_Rect srcrect = *(attr->srcrect);
+	SDL_Rect srcrect = (attr->srcrect);
 	s32 srcW = srcrect.w; s32 srcH = srcrect.h;
 	s32 srcX = srcrect.x; s32 srcY = srcrect.y;
 	vec2_16 pos = attr->pos[0];

@@ -5,7 +5,7 @@ INCLUDE = -I. -I./src
 # obj shit
 OBJS := src/main.o src/bios.o src/keine.o src/mokou.o 
 OBJS += src/mami.o
-NAME = mami.out
+NAME = build/mami.out
 CPPFLAGS += -g -W
 
 %.o: %.c %.cpp

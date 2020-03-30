@@ -14,6 +14,8 @@ typedef struct RGB24 { u8 r,g,b; } RGB24;
 typedef u16 RGB16;
 typedef u8 RGB8;
 
+#define MESH(a,b,c,d) ( (d) | ((c)<<4) | ((b)<<8) | ((a)<<12) )
+
 /*	--	enums	--	*/
 typedef enum keine_pixelfmt
 {
@@ -33,7 +35,7 @@ typedef struct keine
 	RGB16 *pal0; // color palette ( should b readonly )
 	RGB16 *pal1; // alternate palette ( for drawing )
 	void *m; // pixel matrix
-} keine;
+} PACKED keine;
 
 /*	--	main functions	--	*/
 extern keine *keine_init(keine *yago,u32 w,u32 h,keine_pixelfmt fmt);
