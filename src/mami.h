@@ -8,6 +8,9 @@
 #include "kbase.h"
 #include "bios.h"
 
+#include "suwako.h"
+#include "kanako.h"
+
 #include "fade.h"
 #include "sinlut.h"
 
@@ -35,11 +38,13 @@ typedef struct mami_fc {
 	// main
 	bios *io; // bios
 	RGB16 fb_mem[ MAMI_FB_LEN ]; // framebuffer memory
-	keine fb; // framebuffer 
+	keine fb; // framebuffer
+	uint32_t time;
 	// asset
 	keine img_bank[0x10];
-	// game
-	uint32_t time;
+	// objects
+	kanako suwa_objs;
+	suwako suwa_mem[0x200];
 } PACKED mami_fc;
 
 typedef struct mami_imginfo { const char *fname;keine_pixelfmt fmt; } mami_imginfo;

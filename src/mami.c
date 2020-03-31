@@ -1,4 +1,5 @@
 #include "mami.h"
+#include "player.h"
 
 /* -- LUTs -- */
 const mami_imginfo img_lut[] = {
@@ -27,9 +28,15 @@ mami_fc *mami_init(mami_fc *futa,bios *io)
 	fb->pal0 = NULL; fb->pal1 = NULL;
 	fb->fillp = 0xFFFF;
 	// debug print
-	printf("biosram: $%08lX ($%08lX)\n",(uptr)io,sizeof(bios));
-	printf("mamizou: $%08lX ($%08lX)\n",(uptr)futa,sizeof(mami_fc));
-	
+	printf("biosram: $%08lX\n",(uptr)io);
+	printf("mamizou: $%08lX\n",(uptr)futa);
+	printf("mamizou size: $%08lX / $%08lX\n",sizeof(mami_fc),BIOS_RAM_SIZE);	
+
+	/* -- object init -- */
+	kanako *suwa = &futa->suwa_objs;
+	suwako *suwa_mem = futa->suwa_mem;
+	kanako_init(suwa,suwa_mem,0x200);
+
 	/* -- asset loading -- */
 	keine *img_bank = futa->img_bank;
 	const mami_imginfo *info = img_lut;
@@ -69,29 +76,6 @@ void mami_draw(mami_fc *futa)
 	bios *io = futa->io;
 	keine *fb = &futa->fb;
 	uint32_t time = futa->time;
-	// obj drawin
-	u32 ntime = fixmul2(lu_cos(time<<8),256,12) & 0xFF;
-	u32 range = fixmul2(lu_cos(time<<7),32,12);
-	for( u32 ang = ntime; ang < ntime+0x100; ang += 0x20 )
-	{
-		vec2_16 pos;
-		// 0xFF > 0xFF00
-		f16 sx = lu_cos(ang<<8) + (1<<6);
-		f16 sy = lu_sin(ang<<8) + (1<<6);
-		pos.x = (io->w>>1) + fixmul2(lu_cos(ang<<8),range,12);
-		pos.y = (io->h>>1) + fixmul2(lu_sin(ang<<8),range,12);
-		keine *img = &futa->img_bank[IMG_SEVEN];
-		mokou_attr attr1 = { 
-			.src=img,.dst=fb,
-			// 0xFF > 0x07
-			.srcrect={ ((ang>>5)&7)*16,0, 16,16 },
-			.pos={ {pos.x,pos.y} },
-			.mode=0,.fillp=0xFFFF,
-			.flip=0
-		};
-			
-		mokou_sprN( &attr1 );
-	}
 
 	// text drawin
 	vec2_16 txtpos = { 0,io->h-8 };

@@ -11,7 +11,7 @@
 
 /* -- funcs -- */
 #define WIDTH (256)
-#define HEIGHT (160)
+#define HEIGHT (224)
 
 /* -- vars -- */
 bios sdl_bios;
