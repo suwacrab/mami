@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <sys/resource.h>
-
+#include <unistd.h>
 #include <inttypes.h>
 #include <time.h>
 #include <assert.h>

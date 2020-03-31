@@ -35,6 +35,6 @@ extern RGB16 mokou_pget16(keine* yago,s32 x, s32 y);
 extern void mokou_rect16(keine *yago,s32 px,s32 py,s32 dx,s32 dy,RGB16 c);
 
 /*	--	fill functions	--	*/
-extern void mokou_sprN( mokou_attr *attr; );
+extern void mokou_sprN( mokou_attr *attr );
 
 #endif

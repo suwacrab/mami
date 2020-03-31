@@ -73,6 +73,7 @@ void mokou_sprN( mokou_attr *attr )
 				{
 					case KEINE_PIXELFMT_PAL4: pix = srcpal[mokou_pget4(src,gx+srcX,gy+srcY)]; break;
 					case KEINE_PIXELFMT_RGB15: pix = mokou_pget16(src,gx+srcX,gy+srcY); break;
+					default: break;
 				}
 				if(pix!=0) mokou_pset16(dst,lx,ly,pix);
 			}

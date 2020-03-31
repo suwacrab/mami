@@ -19,11 +19,11 @@ typedef u8 RGB8;
 /*	--	enums	--	*/
 typedef enum keine_pixelfmt
 {
-	KEINE_PIXELFMT_PAL4, // 16-color palette, first pixel == first nybble
-	KEINE_PIXELFMT_PAL8, // 256-color palette, each pixel == 1 byte
-	KEINE_PIXELFMT_RGB565, // 16-bit high clr (BBBBBGGGGGGRRRRR in bits)
-	KEINE_PIXELFMT_RGB15, // 15-bit high clr (BBBBBGGGGGRRRRR in bits)
-	KEINE_PIXELFMT_RGB888 // 24-bit high clr ( [R,G,B] in bytes )
+	KEINE_PIXELFMT_PAL4 = 0, // 16-color palette, first pixel == first nybble
+	//KEINE_PIXELFMT_PAL8 = 1, // 256-color palette, each pixel == 1 byte
+	KEINE_PIXELFMT_RGB565=2, // 16-bit high clr (BBBBBGGGGGGRRRRR in bits)
+	KEINE_PIXELFMT_RGB15= 3, // 15-bit high clr (BBBBBGGGGGRRRRR in bits)
+	//KEINE_PIXELFMT_RGB888=4 // 24-bit high clr ( [R,G,B] in bytes )
 } keine_pixelfmt;
 
 /*	--	structs	--	*/
