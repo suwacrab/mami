@@ -14,7 +14,7 @@
 #include "fade.h"
 #include "sinlut.h"
 
-// futa is an unfortunate name...
+struct player;
 
 #ifndef MAMIZOU_H
 #define MAMIZOU_H
@@ -34,16 +34,25 @@ typedef enum mami_img {
 } mami_img;
 
 /* -- structs -- */
-typedef struct mami_fc {
+typedef struct mami_joyp 
+{
+	u8 up : 1; u8 down : 1;
+	u8 left : 1; u8 right : 1;
+} mami_joyp;
+
+typedef struct mami_fc 
+{
 	// main
 	bios *io; // bios
 	RGB16 fb_mem[ MAMI_FB_LEN ]; // framebuffer memory
 	keine fb; // framebuffer
+	mami_joyp joyp;
 	uint32_t time;
 	// asset
 	keine img_bank[0x10];
 	// objects
 	kanako suwa_objs;
+	struct player *p1;
 	suwako suwa_mem[0x200];
 } PACKED mami_fc;
 
@@ -60,6 +69,9 @@ extern void mami_run(mami_fc *futa);
 
 /* -- asset funcs -- */
 extern keine *mami_loadimg(mami_fc *futa,mami_img id);
+
+/* -- update funcs -- */
+extern void mami_updtjoyp(mami_fc *futa);
 
 /* -- draw funcs -- */
 extern void mami_flip(mami_fc *futa);

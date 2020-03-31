@@ -36,6 +36,11 @@ mami_fc *mami_init(mami_fc *futa,bios *io)
 	kanako *suwa = &futa->suwa_objs;
 	suwako *suwa_mem = futa->suwa_mem;
 	kanako_init(suwa,suwa_mem,0x200);
+	// players
+	suwako *plr_suwa = kanako_add(suwa,1);
+	player *plr = (player*)plr_suwa;
+	player_init(plr);
+	futa->p1 = plr;
 
 	/* -- asset loading -- */
 	keine *img_bank = futa->img_bank;
@@ -68,7 +73,13 @@ void mami_run(mami_fc *futa)
 }
 void mami_updt(mami_fc *futa)
 {
-
+	// vars
+	player *p1 = futa->p1;
+	// update joypad
+	mami_updtjoyp(futa);
+	// update player
+	player_updt(p1,futa);
+	player_draw(p1,futa);
 }
 void mami_draw(mami_fc *futa)
 {
@@ -98,6 +109,19 @@ keine *mami_loadimg(mami_fc *futa,mami_img id)
 		exit(-1);
 	}
 	return img;
+}
+
+/* -- update funcs -- */
+void mami_updtjoyp(mami_fc *futa)
+{
+	// vars
+	uint8_t *kstate = futa->io->keystate;
+	mami_joyp *joyp = &futa->joyp;
+	/* -- dpad settin -- */
+	joyp->up = kstate[SDLK_UP];
+	joyp->down = kstate[SDLK_DOWN];
+	joyp->left = kstate[SDLK_LEFT];
+	joyp->right = kstate[SDLK_RIGHT];
 }
 
 /* -- draw funcs -- */
