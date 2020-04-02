@@ -6,7 +6,7 @@
 #define SUWAKO_NULL (0xFFFF)
 
 /*	--	suwa objs	--	*/
-typedef uint8_t suwa_data[0x24];
+typedef uint32_t suwa_data[0xC];
 typedef struct suwa_stat {
 	uint8_t dead; // obvious
 	uint16_t mode; // mode, for obj type

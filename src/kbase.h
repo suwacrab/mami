@@ -43,7 +43,8 @@ typedef u8 pix8;
 #define KBSIZE(n) ( (sizeof(u8)*1024) * (n) )
 #define MBSIZE(n) ( KBSIZE(1024) * (n) )
 
-/*	--	ranges	--	*/
+/* -- ranges & ternary bullshit -- */
+#define SIGN(n) ( n < 0 ? -1 : n > 1 ? 1 : 0 )
 INLINE s32 clamp(s32 x,s32 min,s32 max) // clamps x between min & max
 { return (x < min) ? min : (x > max) ? max : x; }
 INLINE bool in_range(s32 x,s32 min,s32 max) // returns if x is between min & max

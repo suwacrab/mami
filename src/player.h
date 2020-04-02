@@ -3,13 +3,21 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+/* -- const defs -- */
+
+#define PLR_MAXWALK (0x010)
+// walkspeed (1.00)
+#define PLR_WALKSPD (0x004)
+// friction (0.50
+#define PLR_FRC (0x002)
+
 /* -- structs -- */
 typedef struct player
 {
 	// suwa props
 	suwa_stat stat;
 	// player props
-	vec2_16 pos; vec2_8 vel; // pos (12.4) & vel (4.4), $06
+	vec2_16 pos; vec2_16 vel; // pos (12.4) & vel (4.4), $06
 	s8 hp,maxhp; // hp & maxhp, $02
 	
 } PACKED player;
