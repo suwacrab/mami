@@ -12,8 +12,10 @@
 #define PLR_MAXWALK (0x030)
 // walkspeed (1.00)
 #define PLR_WALKSPD (0x004)
-// friction (0.50
-#define PLR_FRC (0x002)
+// friction (spd)
+#define PLR_FRC (0x004)
+// walk decelleration
+#define PLR_DECWALK (0x008)
 
 /* -- structs -- */
 typedef struct player
@@ -33,6 +35,7 @@ extern void player_draw(player *plr,mami_fc *futa);
 
 /* -- draw funcs -- */
 extern void player_drawdebug(player *plr,mami_fc *futa);
+extern void player_drawmami(player *plr,mami_fc *futa);
 
 /* -- updt funcs -- */
 extern void player_updtmove(player *plr,mami_fc *futa);

@@ -75,6 +75,6 @@ extern void mami_updtjoyp(mami_fc *futa);
 
 /* -- draw funcs -- */
 extern void mami_flip(mami_fc *futa);
-extern void mami_drawarcfont(mami_fc *futa,char *txt,vec2_16 pos);
+extern void mami_drawarcfont(mami_fc *futa,char *txt,s32 px,s32 py);
 
 #endif

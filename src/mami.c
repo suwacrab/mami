@@ -92,7 +92,7 @@ void mami_draw(mami_fc *futa)
 	vec2_16 txtpos = { 0,io->h-8 };
 	char txt[0x20];
 	sprintf(txt,"TIME: %04X\n",futa->time);
-	mami_drawarcfont(futa,txt,txtpos);
+	mami_drawarcfont(futa,txt,txtpos.x,txtpos.y);
 }
 
 /* -- asset funcs -- */
@@ -149,7 +149,7 @@ void mami_flip(mami_fc *futa)
 
 	bios_flip(io);
 }
-void mami_drawarcfont(mami_fc *futa,char *txt,vec2_16 pos)
+void mami_drawarcfont(mami_fc *futa,char *txt,s32 px,s32 py)
 {
 	// vars
 	keine *font = &futa->img_bank[IMG_ARCFONT];
@@ -171,10 +171,11 @@ void mami_drawarcfont(mami_fc *futa,char *txt,vec2_16 pos)
 		{ ox=0; oy++; }
 		else
 		{
-			attr.pos[0] = (vec2_16){ pos.x + (ox*8),pos.y + (oy*8) };
+			attr.pos[0] = (vec2_16){ px + (ox*8),py + (oy*8) };
 			attr.srcrect = (SDL_Rect){ (c&15)*8,(c>>4)*8,8,8 };
 			mokou_sprN( &attr );
 			ox++;
 		}
 	}
 }
+
