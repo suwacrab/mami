@@ -59,7 +59,9 @@ void player_drawdebug(player *plr,mami_fc *futa)
 	vec2_16 txtpos = { pos.x>>4,pos.y>>4 };
 	/* -- print pos -- */
 	char txt[0x20];
-	sprintf(txt,"POS: %d,%d",pos.x,pos.y);
+	float fx = (float)pos.x / (PLR_DEC);
+	float fy = (float)pos.y / (PLR_DEC);
+	sprintf(txt,"POS: %f,%f",fx,fy);
 	printf("%s\n",txt);
 	mami_drawarcfont(futa,txt,txtpos);
 }

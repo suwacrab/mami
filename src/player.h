@@ -5,7 +5,11 @@
 
 /* -- const defs -- */
 
-#define PLR_MAXWALK (0x010)
+// shift & decimal
+#define PLR_SHF (4)
+#define PLR_DEC (1<<4)
+// max walkspeed ()
+#define PLR_MAXWALK (0x030)
 // walkspeed (1.00)
 #define PLR_WALKSPD (0x004)
 // friction (0.50
